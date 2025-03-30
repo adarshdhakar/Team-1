@@ -1,0 +1,415 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    -ms-overflow-style: none !important;
+    background: #48224c;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none !important;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navigationPanel {
+    width: 10%;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 30%;
+    height: 100%;
+}
+
+.heroSection {
+    width: 60%;
+    height: 100%;
+}
+
+.navBar {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    padding: 15px;
+}
+
+.inputBar{
+    width:35%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border:2px solid white;
+    height:100%;
+
+    border-radius: 100px;
+    padding:2%;
+    padding-inline: 5%;
+}
+
+.input{
+    width:90%;
+    background: transparent;
+    border:none;
+    outline:none;
+    color:white;
+    height:100%;
+    font-size: large;
+    border-color: transparent;
+}
+
+.inputBar:has(.input:focus) {
+    border-color: #FF5757;
+}
+
+svg{
+    color:white;
+}
+
+.inputBar:focus-within svg {
+    color: #FF5757;
+} */
+
+/* === Global Resets & Base Styles === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    background-color: #48224c; /* A purple shade reminiscent of Discord’s branding */
+    color: #ffffff;
+  }
+  
+  /* === NAV BAR === */
+  .navBar {
+    width: 100%;
+    background-color: #48224c; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+  
+  .inputBar {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .inputBar svg {
+    position: absolute;
+    right: 1rem;
+    width: 20px;
+    height: 20px;
+    color: #ccc;
+  }
+  
+  .input {
+    width: 450px;
+    padding: 0.5rem 2.5rem 0.5rem 0.75rem; /* Extra right padding for the icon */
+    border-radius: 50px;
+    border: 2px solid white;
+    outline: none;
+    background-color: #765578;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  
+  .container {
+    display: flex;
+    height: calc(100vh - 3.5rem); /* Subtract navBar height if you want a full viewport layout */
+    gap:10px;
+  }
+  
+  /* === NAVIGATION PANEL (Leftmost vertical bar) === */
+  .navigationPanel {
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+  
+  .navigationPanelFirst ul,
+  .navigationPanelSecond {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .navigationPanelFirst ul {
+    gap: 1rem;
+    list-style: none;
+  }
+  
+  .navigationPanelFirst li {
+    cursor: pointer;
+  }
+  
+  .navigationPanelImage {
+    width: 40px;
+    height: 40px;
+    background-color: #999;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .navigationPanelFirst svg,
+  .navigationPanelSecond svg {
+    fill: #ffffff;
+    cursor: pointer;
+  }
+  
+  .onlineStatus {
+    width: 10px;
+    height: 10px;
+    background-color: #3ba55c; /* Typical Discord "online" green */
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    border: 2px solid #2f265f; /* Outline matching the panel's background */
+  }
+  
+  /* Positioning the user’s profile image + status at bottom */
+  .navigationPanelSecond {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  
+  .sidebar {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    gap:10px;
+  }
+  
+  .sidebarSearch {
+    padding: 1rem;
+    color: #ccc;
+    font-weight: 500;
+    background-color: #59355d;
+    border-radius: 20px;
+  }
+  
+  .sidebarMain {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    background-color: #59355d;
+    border-radius: 20px;
+  }
+  .sidebarRedirect {
+    padding : 10px;    
+    overflow-y: auto;
+    flex: 1;
+  }
+  .sidebarRedirectIcons {
+    background-color: #48224c;
+    border-radius : 20px;
+    padding : 10px;
+  }
+  
+  .sidebarRedirectIcons ul {
+    list-style: none;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+  }
+  
+  .sidebarRedirectIcons li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .sidebarRedirectIcons li p {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .sidebarRedirect hr {
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0.5rem 0;
+  }
+  
+  .sidebarRedirectMessages ul {
+    list-style: none;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .sidebarRedirectMessages li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    background-color: #48224c;
+    padding : 5px;
+    border-radius : 30px;
+  }
+  
+  .sidebarRedirectMessagesIcons {
+    width: 40px;
+    height: 40px;
+    background-color: #999;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .sidebarProfile {
+    background-color: #48224c;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    margin-inline:3px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  
+  .sidebarProfile > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .sidebarProfile > div:last-child {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* === HERO SECTION (Main content area) === */
+  .heroSection {
+    flex: 1;    
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-right:2px;
+  }
+  
+  /* Top bar within the hero section */
+  .heroSectionHeader {
+    display: flex;
+    align-items: center;
+    background-color: #59355d;
+    padding: 1rem;
+    gap: 2rem;
+    font-weight:300;
+    border-radius:20px;
+  }
+  
+  .discord-shop {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .discord-logo {
+    width: 24px;
+    height: 24px;
+    background-color: #bbb; /* Placeholder */
+    border-radius: 4px;
+  }
+  
+  .featured, 
+  .shop-all {
+    cursor: pointer;
+    color: #4f3678;
+  }
+  
+  .heroSectionMain {
+    display: flex;
+    flex: 1;
+    padding: 1.5rem;
+    gap: 2rem;
+    background-color: white;
+    border-radius: 20px;
+    
+  }
+  
+  
+  .heroSecionProducts {
+    flex: 1;
+    background-image: url("docs/heroImage.png");
+    background-size: cover;
+  }
+  
+  .heroSecionProducts ul {
+    list-style: none;
+    display: grid;
+    gap: 1.5rem;
+    display:flex;
+  }
+  
+  .heroSecionProducts li {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .heroSecionProducts li:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .heroSectionProductImage {
+    width: 100%;
+    height: 120px;
+    background-color: #ddd;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .heroSectionProductName {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #333;
+  }
+  
+  .heroSectionProductPrice {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .heroSectionProductActualPrice {
+    color: #111;
+    font-weight: 700;
+  }
+  
+  .heroSectionProductDiscount {
+    color: #dc2626; /* Red for discount or sale price */
+    font-weight: 600;
+  }
+  
